@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Юридические услуги - Сергеев Александр Сергеевич</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #d2b48c; /* Светло-коричневый фон */
+      color: #333;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: #a0522d; /* Темно-коричневый */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 40px;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #ccc;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #fff;
+    }
+
+    section {
+      padding: 4rem 2rem;
+    }
+
+    .hero {
+      background-image: url('https://perm.hse.ru/data/2023/11/03/2054622577/1iStock-1471836389.jpg ');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .hero button {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background-color: #a0522d;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background-color: #fff;
+      color: #a0522d;
+    }
+
+    .grid-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #4a5568;
+    }
+
+    footer {
+      background-color: #a0522d;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .flex-contact {
+        display: flex;
+        gap: 2rem;
+      }
+      .flex-contact > div {
+        flex: 1;
+      }
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      max-width: 700px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .close-btn {
+      float: right;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="https://sun9-54.userapi.com/impg/2m-4BaytO5FYKoGnoRisVegYvfN4yJrHqYHkag/E0FFTTxv4yc.jpg?size=960x1280&quality=95&sign=301206944eeb7aeb1a421a5f8730e6d3&type=album " alt="Логотип">
+    <span><strong>Юридические услуги - Сергеев Александр Сергеевич</strong></span>
+  </div>
+  <nav>
+    <a href="#home" class="active">Главная</a>
+    <a href="#services">Услуги</a>
+    <a href="#about">Обо мне</a>
+    <a href="#news">Новости</a>
+    <a href="#articles">Статьи</a>
+    <a href="#promotions">Акции</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h1>Юридическая помощь от профессионала</h1>
+    <p>Сергеев Александр Сергеевич — опытный юрист с 17+ летним стажем работы.</p>
+    <div class="buttons">
+      <button class="btn-primary" onclick="openModal('appointment')">Записаться на консультацию</button>
+      <button class="btn-secondary" onclick="openModal('chat')">Чат с юристом</button>
+    </div>
+  </div>
+</section>
+
+<!-- Услуги -->
+<section id="services">
+  <h2 style="text-align:center; font-size:2rem; font-weight:bold; margin-bottom:2rem;">Наши услуги</h2>
+  <div class="grid-section">
+    <div class="card">
+      <h3>Для физических лиц</h3>
+      <ul>
+        <li>Семейное право</li>
+        <li>Трудовое право</li>
+        <li>Жилищные споры</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Для юридических лиц</h3>
+      <ul>
+        <li>Корпоративное право</li>
+        <li>Правовая поддержка хозяйственной деятельности</li>
+        <li>Налоговое сопровождение</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Обо мне -->
+<section id="about">
+  <h2 style="text-align:center; font-size:2rem; font-weight:bold; margin-bottom:2rem;">Обо мне</h2>
+  <div class="flex-contact">
+    <div>
+      <img src="https://sun9-54.userapi.com/impg/2m-4BaytO5FYKoGnoRisVegYvfN4yJrHqYHkag/E0FFTTxv4yc.jpg?size=960x1280&quality=95&sign=301206944eeb7aeb1a421a5f8730e6d3&type=album " alt="Сергеев Александр Сергеевич" style="width: 100%; max-width: 300px; border-radius: 10px;">
+    </div>
+    <div>
+      <p><strong>Сергеев Александр Сергеевич</strong> окончил в 2004 году Томский государственный университет, квалификация - юрист, специальность - юриспруденция.</p>
+      <p>Имеет богатый практический опыт работы:</p>
+      <ul>
+        <li><strong>Управление по обеспечению деятельности мировых судей Новосибирской области в Доволенском районе</strong> в должности секретаря судебного участка - 15 лет 8 месяцев</li>
+        <li><strong>Администрация Доволенского сельсовета</strong> в должности ведущего специалиста-юриста - 1 год 3 месяца</li>
+        <li><strong>Практика в адвокатских конторах</strong> по различным направлениям права - 5 лет</li>
+      </ul>
+      <p>Александр Сергеевич специализируется на решении сложных правовых вопросов, оказании комплексной юридической поддержки как физическим, так и юридическим лицам. Его подход основан на глубоком знании законодательства и индивидуальном подходе к каждому клиенту.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Акции -->
+<section id="promotions">
+  <h2 style="text-align:center; font-size:2rem; font-weight:bold; margin-bottom:2rem;">Наши акции</h2>
+  <div class="grid-section">
+    <div class="card">
+      <h3>Скидка 50% на первую консультацию</h3>
+      <p>Получите юридическую консультацию у Сергеева Александра Сергеевича со скидкой 50%. Идеально для тех, кто хочет проконсультироваться перед началом сотрудничества.</p>
+    </div>
+    <div class="card">
+      <h3>Бесплатная проверка одного документа</h3>
+      <p>Простая, но важная услуга — бесплатная проверка одного юридического документа (договор, соглашение, завещание и др.).</p>
+    </div>
+  </div>
+</section>
+
+<!-- Новости -->
+<section id="news">
+  <h2 style="text-align:center; font-size:2rem; font-weight:bold; margin-bottom:2rem;">Новости в сфере права</h2>
+  <div class="grid-section">
+    <div class="card" onclick="openModal('news1')">
+      <h3>Новые изменения в семейном праве</h3>
+      <p>Правительство утвердило новые правила раздела имущества при разводе...</p>
+    </div>
+    <div class="card" onclick="openModal('news2')">
+      <h3>Обновления в трудовом законодательстве</h3>
+      <p>Внесены изменения в порядок оформления больничных листов...</p>
+    </div>
+  </div>
+</section>
+
+<!-- Статьи -->
+<section id="articles">
+  <h2 style="text-align:center; font-size:2rem; font-weight:bold; margin-bottom:2rem;">Статьи</h2>
+  <div class="grid-section">
+    <div class="card" onclick="openModal('article1')">
+      <h3>Как защитить свои права при покупке квартиры</h3>
+      <p>Покупка недвижимости — это серьезное решение, требующее юридической защиты...</p>
+    </div>
+  </div>
+</section>
+
+<!-- Отзывы -->
+<section id="reviews">
+  <h2 style="text-align:center; font-size:2rem; font-weight:bold; margin-bottom:2rem;">Отзывы клиентов</h2>
+  <div class="grid-section">
+    <div class="card">
+      <p><strong>Иванов Иван</strong>: "Александр Сергеевич помог мне решить сложный вопрос по жилищному спору. Рекомендую!"</p>
+    </div>
+    <div class="card">
+      <p><strong>Петрова Мария</strong>: "Профессиональный подход и быстрое решение вопроса. Спасибо за помощь!"</p>
+    </div>
+    <div class="card">
+      <p><strong>Сидоров Сергей</strong>: "Хороший юрист, который всегда на связи и дает четкие рекомендации."</p>
+    </div>
+  </div>
+</section>
+
+<!-- Контакты -->
+<section id="contacts">
+  <h2 style="text-align:center; font-size:2rem; font-weight:bold; margin-bottom:2rem;">Контакты</h2>
+  <div class="flex-contact">
+    <div>
+      <p><strong>Адрес:</strong> Новосибирская область, село Довольное, улица Новая, д. 10, кв. 16</p>
+      <p><strong>Телефон:</strong> 8 (913) 760-17-33</p>
+      <p><strong>Email:</strong> tornado_84@bk.ru</p>
+      <iframe 
+        src="https://yandex.ru/map-widget/v1/?um=constructor%3A1a6f4e4d4c5e4d4f5e4d4c5e4d4f5e4d4c5e4d4f5e4d4c5e4d4f5e4d4f5e4d&source=constructor " 
+        width="100%" height="400" frameborder="0"></iframe>
+    </div>
+    <div>
+      <form class="contact-form">
+        <h3>Свяжитесь с нами</h3>
+        <input type="text" placeholder="Имя" required />
+        <input type="email" placeholder="Email" required />
+        <textarea rows="5" placeholder="Сообщение" required></textarea>
+        <button type="submit" class="btn-primary">Отправить</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Юридические услуги - Сергеев Александр Сергеевич. Все права защищены.</p>
+</footer>
+
+<!-- Модальные окна -->
+
+<div class="modal" id="appointment">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <h2>Запись на консультацию</h2>
+    <form>
+      <label for="name">Имя:</label>
+      <input type="text" id="name" name="name" placeholder="Введите ваше имя" required />
+
+      <label for="phone">Телефон:</label>
+      <input type="tel" id="phone" name="phone" placeholder="+7 (XXX) XXX-XX-XX" required />
+
+      <label for="service">Выберите услугу:</label>
+      <select id="service" name="service" required>
+        <option value="">Выберите услугу</option>
+        <option value="family-law">Семейное право</option>
+        <option value="labor-law">Трудовое право</option>
+        <option value="real-estate">Жилищные споры</option>
+        <option value="corporate-law">Корпоративное право</option>
+        <option value="business-support">Правовая поддержка</option>
+        <option value="tax-advice">Налоговое сопровождение</option>
+      </select>
+
+      <label for="date">Дата и время:</label>
+      <input type="datetime-local" id="date" name="date" required />
+
+      <button type="submit">Записаться</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="chat">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <h2>Чат с юристом</h2>
+    <form>
+      <label for="name_chat">Имя:</label>
+      <input type="text" id="name_chat" name="name_chat" placeholder="Введите ваше имя" required />
+
+      <label for="phone_chat">Телефон:</label>
+      <input type="tel" id="phone_chat" name="phone_chat" placeholder="+7 (XXX) XXX-XX-XX" required />
+
+      <label for="message_chat">Сообщение:</label>
+      <textarea id="message_chat" name="message_chat" placeholder="Напишите ваш вопрос..." required></textarea>
+
+      <button type="submit">Отправить сообщение</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="news1">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <h2>Новые изменения в семейном праве</h2>
+    <p>Правительство утвердило новые правила раздела имущества при разводе. Теперь супруги могут согласовать условия раздела без судебного разбирательства, что значительно ускоряет процесс. Это особенно важно для семей с детьми, где нужно минимизировать конфликты.</p>
+  </div>
+</div>
+
+<div class="modal" id="news2">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <h2>Обновления в трудовом законодательстве</h2>
+    <p>Внесены изменения в порядок оформления больничных листов. Теперь работодатели обязаны принимать электронные больничные, что упрощает процедуру и снижает риск подделки документов. Также изменена система оплаты больничных для некоторых категорий работников.</p>
+  </div>
+</div>
+
+<div class="modal" id="article1">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <h2>Как защитить свои права при покупке квартиры</h2>
+    <p>Покупка недвижимости — это серьезное решение, требующее юридической защиты. Перед подписанием договора необходимо:</p>
+    <ol>
+      <li>Проверить юридическую чистоту объекта через Росреестр.</li>
+      <li>Получить экспертную оценку состояния дома или квартиры.</li>
+      <li>Заключить договор с адвокатом для проверки всех документов.</li>
+      <li>Убедиться в отсутствии долгов по коммунальным платежам.</li>
+    </ol>
+    <p>Эти шаги помогут избежать возможных проблем в будущем.</p>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    document.getElementById(id).classList.add('active');
+  }
+
+  function closeModal() {
+    document.querySelectorAll('.modal').forEach(modal => modal.classList.remove('active'));
+  }
+</script>
+
+</body>
+</html>
